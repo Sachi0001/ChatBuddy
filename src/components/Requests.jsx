@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addRequests, removeRequests } from '../utils/requestSlice';
 import { SuccessMessage } from './SuccessMessage';
 import { ErrorMessage } from './ErrorMessage';
+import { Base_Url } from '../utils/constants';
 
 export const Requests = () => {
 
@@ -30,7 +31,6 @@ const acceptOrReject = async(status,_id)=>{
         })
         const data = await response.json();
         if(response.ok){
-        console.log(data,"asjhdaj")
         setSuccessMessage(data?.message)
         dispatch(removeRequests(_id))
         }else{

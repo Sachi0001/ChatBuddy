@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { UserCard } from './UserCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFeed } from '../utils/feedSlice'
+import { Base_Url } from '../utils/constants';
 
 export const Feed = () => {
 const feed = useSelector((store)=>store.feed)

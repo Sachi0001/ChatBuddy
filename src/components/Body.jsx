@@ -3,6 +3,7 @@ import { Navbar } from './Navbar'
 import {Outlet, useNavigate} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { addUsers } from '../utils/userSlice'
+import { Base_Url } from '../utils/constants'
 
 export const Body = () => {
   const user = useSelector((store)=>store?.user)
@@ -12,7 +13,7 @@ const dispatch = useDispatch()
   const feed = async()=>{
     if(user) return;
     try {
-      const res = await fetch("Base_Url/user",{
+      const res = await fetch(`${Base_Url}/user`,{
   credentials: "include"
 })
       if (!res?.ok) {

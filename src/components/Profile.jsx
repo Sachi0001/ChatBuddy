@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { UserCard } from './UserCard'
 import { useSelector } from 'react-redux'
+import { Base_Url } from '../utils/constants'
+import { SuccessMessage } from './SuccessMessage'
+import { ErrorMessage } from './ErrorMessage'
 
 export const Profile = () => {
   const user = useSelector((store) => store.user)
@@ -12,7 +15,8 @@ export const Profile = () => {
   const [skills, setSkills] = useState(user?.skills)
   const [photoUrl, setPhotoUrl] = useState(user?.photoUrl)
   const [gender, setGender] = useState(user?.gender)
-
+   const [successMessage,setSuccessMessage] = useState("");
+  const[errorMessage,setErrorMessage] = useState("")
   useEffect(() => {
     if (user) {
       setFirstName(user.firstName)
@@ -42,14 +46,26 @@ export const Profile = () => {
         }),
       })
 
-      const data = await res.json()
-      console.log(data)
+      const data = await res.json();
+       if(res.ok){
+              setSuccessMessage(data?.message)
+              dispatch(removeRequests(_id))
+              }else{
+                setErrorMessage(data.error || "something went wrong")
+              }
     } catch (error) {
       console.log(error)
     }
   }
 
   return (
+
+<>
+<div className='absolute top-4 left-1/2 -translate-x-1/2 z-50"'>
+        {successMessage&&<SuccessMessage message = {successMessage} setMessage = {()=>setSuccessMessage()}/>}
+         {errorMessage && <ErrorMessage message = {errorMessage} setMessage = {()=>setErrorMessage()} />}
+
+        </div>
     <div className="flex flex-col lg:flex-row justify-center items-start gap-8 p-4 w-full">
 
       {/* LEFT SIDE — User Preview */}
@@ -134,6 +150,6 @@ export const Profile = () => {
         </div>
       </div>
 
-    </div>
+    </div></>
   )
 }
