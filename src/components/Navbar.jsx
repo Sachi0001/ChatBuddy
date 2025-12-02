@@ -22,9 +22,9 @@ const handleLogOut = async () => {
     if (res.ok) {
       console.log("Logged out successfully");
       dispatch(removeUsers())
-      window.location.reload();
-
-      navigate("/login")  
+      
+      window.location.href = "/login";
+    
     } else {
       const data = await res.json();
       console.log("Logout failed:", data);
