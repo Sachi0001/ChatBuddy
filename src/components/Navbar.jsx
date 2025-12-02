@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { removeUsers } from '../utils/userSlice'
 import { Base_Url } from '../utils/constants'
+import chatImg from "../assets/chat.webp"
 
 export const Navbar = () => {
   const user = useSelector((store)=>store.user)
@@ -36,8 +37,16 @@ const handleLogOut = async () => {
 
   return (
       <div className="navbar bg-base-100 shadow-sm">
-  <div className="flex-1">
-    <Link to={"/"} className="btn btn-ghost text-xl">DevTinder</Link>
+  <div className="flex-1 ">
+    <Link to={"/"} className='flex items-center'>
+<img
+            alt="logo"
+            src={chatImg} 
+            className="h-10 w-auto object-contain rounded-xl" />
+        
+    <span  className="btn btn-ghost text-xl">ChatBuddy</span>
+    </Link>
+    
   </div>
   <div className="flex gap-2">
     <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
@@ -48,7 +57,7 @@ const handleLogOut = async () => {
           <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={user.photoUrl} />
         </div>
       
       </div>
