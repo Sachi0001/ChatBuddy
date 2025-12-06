@@ -8,12 +8,12 @@ import { Base_Url } from '../utils/constants';
 
 export const Login = () => {
   const navigate = useNavigate()
-const [emailId,setEmailId] = useState("sachi@gmail.com");
+const [emailId,setEmailId] = useState("");
 const [successMessage,setSuccessMessage] = useState("");
 const [errorMessage,setErrorMessage] = useState("");
 const[firstName,setFirstName] = useState("");
 const[lastName,setLastName] = useState("")
-const [password,setPassWord] = useState("Sachi@123")
+const [password,setPassWord] = useState("")
 const [isLogin,setIsLogin] = useState(true)
 const dispatch = useDispatch()
 const handleLogin = async() =>{
