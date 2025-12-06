@@ -9,12 +9,14 @@ import { Feed } from './components/Feed'
 import { Profile } from './components/Profile'
 import { Requests } from './components/Requests'
 import { Connections } from './components/Connections'
+import ErrorBoundary from './components/ErrorBoundary'
 function App() {
 
   return (
     <>
       <Provider store={store}>
         <BrowserRouter basename="/">
+        <ErrorBoundary>
           <Routes>
             <Route path="/" element={<Body />}>
               <Route index element={<Feed />} />
@@ -26,6 +28,7 @@ function App() {
               <Route path="login" element={<Login />} />
             </Route>
           </Routes>
+        </ErrorBoundary>
         </BrowserRouter>
       </Provider>
 
