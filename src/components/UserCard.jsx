@@ -41,7 +41,7 @@ export const UserCard = ({ feed }) => {
   }
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col shadow-xl'>
       <div className='absolute top-4 left-1/2 -translate-x-1/2 z-50'>
         {successMessage && <SuccessMessage message={successMessage} setMessage={() => setSuccessMessage("")} />}
       </div>
