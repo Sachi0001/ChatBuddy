@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addConnections } from '../utils/connectionSlice';
 import { Base_Url } from '../utils/constants';
+import { Link } from 'react-router-dom';
 
 export const Connections = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,8 @@ useEffect(()=>{
     getConnections()
 },[])
 
+console.log(connections,"connections")
+
     return (
 
         <>
@@ -29,7 +32,7 @@ useEffect(()=>{
 
                     {connections?.map((item, i) => (
                         <div
-                            key={i}
+                            key={item._id}
                             className="
               card card-side bg-base-300 shadow-sm 
               w-full sm:w-10/12 md:w-7/12 lg:w-6/12 
@@ -50,23 +53,15 @@ useEffect(()=>{
                                 </h2>
                                 <p>{item?.about}</p>
                             </div>
-
-                            {/* <div className="card-body p-4 flex flex-row items-center justify-end w-full sm:w-auto">
-                                <div className="flex justify-center ">
-                                    <button className="btn btn-primary btn-sm sm:btn-md md:p-4 sm:p-2 mx-2  bg-blue-600 hover:bg-green-700" >
-                                        Accept
-                                    </button>
-                                    <button className="btn  btn-sm sm:btn-md md:p-4 sm:p-2 mx-2  hover:bg-red-700 p-4">
-                                        Reject
-                                    </button>
-                                </div>
-                            </div>
- */}
-
+<Link to={`/chat/${item._id}`}>
+<button>
+    Chat
+</button></Link>
                         </div>
                     ))}
 
                 </div>
             )
             }</>);
+
 }

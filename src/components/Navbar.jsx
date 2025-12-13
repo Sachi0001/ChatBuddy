@@ -51,7 +51,7 @@ export const Navbar = () => {
       </div>
       {user &&
       <div className="flex gap-2">
-        <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+        <h3 className='font-bold'>Welcome {`${user.firstName}`}</h3>
 
          
         <div className="dropdown dropdown-end">

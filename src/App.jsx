@@ -11,6 +11,7 @@ import { Requests } from './components/Requests'
 import { Connections } from './components/Connections'
 import ErrorBoundary from './components/ErrorBoundary'
 import { Premium } from './components/Premium'
+import { Chat } from './components/Chat'
 function App() {
 
   return (
@@ -26,6 +27,8 @@ function App() {
               <Route path="/requests" element={<Requests />} />
               <Route path="/connections" element={<Connections />} />
               <Route path="/premium" element={<Premium />} />
+              <Route path="chat/:targetId" element={<Chat />} />
+
 
               {/* Child Routes that will render inside <Outlet /> */}
               <Route path="login" element={<Login />} />
