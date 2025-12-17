@@ -54,7 +54,7 @@ console.log(connections,"connections")
                                 <p>{item?.about}</p>
                             </div>
 <Link to={`/chat/${item._id}`}>
-<button>
+<button className='p-4'>
     Chat
 </button></Link>
                         </div>
